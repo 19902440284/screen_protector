@@ -1,3 +1,8 @@
+## 1.5.3
+
+- Fix: Lower iOS deployment target to v13
+- Acknowledgements: Thanks to @waitwalker for their PRs 🙏
+
 ## 1.5.2
 
 - iOS: add Swift Package Manager support
