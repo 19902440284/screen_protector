@@ -1,7 +1,7 @@
 ## 1.5.4
 
-- Android: compile Kotlin sources when AGP 9 consumers disable built-in Kotlin
-- Android: align Java and Kotlin JVM targets to Java 17
+- Android: migrate the plugin implementation to Java to remove the Kotlin
+  Gradle Plugin dependency and support AGP 9 built-in Kotlin
 
 ## 1.5.3
 

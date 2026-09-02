@@ -1,16 +1,5 @@
 plugins {
     id 'com.android.library'
-    id 'org.jetbrains.kotlin.android' apply false
-}
-
-// Flutter keeps the legacy Kotlin plugin enabled during its AGP 9 migration by
-// setting android.builtInKotlin=false in the consuming application's properties.
-def agpMajor = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION.tokenize('.')[0].toInteger()
-def builtInKotlinDisabled = project.hasProperty('android.builtInKotlin') &&
-        project.property('android.builtInKotlin').toString() == 'false'
-def appliesLegacyKotlin = agpMajor < 9 || builtInKotlinDisabled
-if (appliesLegacyKotlin) {
-    apply plugin: 'kotlin-android'
 }
 
 rootProject.allprojects {
@@ -32,10 +21,6 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
 
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
-
     defaultConfig {
         minSdk 21
         targetSdk 36
@@ -43,17 +28,5 @@ android {
 
     lintOptions {
         disable 'InvalidPackage'
-    }
-}
-
-if (appliesLegacyKotlin) {
-    android.kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
-    }
-} else {
-    kotlin {
-        compilerOptions {
-            jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
-        }
     }
 }
