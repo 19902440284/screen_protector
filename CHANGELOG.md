@@ -1,3 +1,7 @@
+## 1.5.4
+
+- Android: compile Kotlin sources when AGP 9 consumers disable built-in Kotlin
+
 ## 1.5.3
 
 - Fix: Lower iOS deployment target to v13
