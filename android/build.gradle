@@ -8,7 +8,8 @@ plugins {
 def agpMajor = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION.tokenize('.')[0].toInteger()
 def builtInKotlinDisabled = project.hasProperty('android.builtInKotlin') &&
         project.property('android.builtInKotlin').toString() == 'false'
-if (agpMajor < 9 || builtInKotlinDisabled) {
+def appliesLegacyKotlin = agpMajor < 9 || builtInKotlinDisabled
+if (appliesLegacyKotlin) {
     apply plugin: 'kotlin-android'
 }
 
@@ -42,5 +43,17 @@ android {
 
     lintOptions {
         disable 'InvalidPackage'
+    }
+}
+
+if (appliesLegacyKotlin) {
+    android.kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17.toString()
+    }
+} else {
+    kotlin {
+        compilerOptions {
+            jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+        }
     }
 }

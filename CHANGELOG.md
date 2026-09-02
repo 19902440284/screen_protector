@@ -1,6 +1,7 @@
 ## 1.5.4
 
 - Android: compile Kotlin sources when AGP 9 consumers disable built-in Kotlin
+- Android: align Java and Kotlin JVM targets to Java 17
 
 ## 1.5.3
 
