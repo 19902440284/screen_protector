@@ -27,8 +27,11 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17
+    // AGP 9 derives the built-in Kotlin JVM target from targetCompatibility.
+    if (agpMajor < 9) {
+        kotlinOptions {
+            jvmTarget = '17'
+        }
     }
 
     sourceSets {
